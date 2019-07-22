@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-# author @danbros
-# Exercício de Introdução à CC com Python Coursera USP
+# @author: danbros
+# Tarefa S9 em Introdução à CC com Python I USP (Coursera)
 
 """ Similaridade entre textos 
 
