@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.6-brightgreen.svg)
 
-This is my collection of Python Scripts.<br />
+Esta é minha coleção de scripts Python.<br/>
 
 ## Curso CC com Python USP ([Coursera](https://www.coursera.org/learn/ciencia-computacao-python-conceitos))
 
