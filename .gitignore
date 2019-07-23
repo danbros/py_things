@@ -1,79 +1,79 @@
-# Byte-compilado / otimizado / arquivos DLL
-__pycache__ /
-* .py [ cod ]
-* $ py.class
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-Extensões # C
-* .so
+# C extensions
+*.so
 
-# Config files Editor de Texto / IDE
-.idea /
-.idea / *
-.vscode /
-.vscode / *
+# Config files Text Editor/IDE
+.idea/
+.idea/*
+.vscode/
+.vscode/*
 
-# Distribuição / embalagem
+# Distribution / packaging
 .Python
-construir /
-desenvolver ovos /
-dist /
-downloads /
-ovos /
-.eggs /
-lib /
-lib64 /
-partes /
-sdist /
-var /
-rodas /
-* .egg-info /
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
 .installed.cfg
-* .egg
-MANIFESTO
+*.egg
+MANIFEST
 
 # PyInstaller
-#   Normalmente, esses arquivos são escritos por um script python de um modelo
-#   antes que o PyInstaller construa o exe, para injetar data / outras informações nele.
-*. manifesto
-* .spec
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-# Logs do instalador
+# Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Teste de unidade / relatórios de cobertura
-htmlcov /
-.tox /
-.cobertura
-.cobertura. *
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
 .cache
 nosetests.xml
 coverage.xml
-* .cover
-Hipótese /
-.pytest_cache /
+*.cover
+.hypothesis/
+.pytest_cache/
 
-# Traduções
-* .mo
-* .pot
+# Translations
+*.mo
+*.pot
 
-# Coisas do Django:
-* .log
+# Django stuff:
+*.log
 local_settings.py
 db.sqlite3
 
-# Material de balão:
-instance /
+# Flask stuff:
+instance/
 .webassets-cache
 
-# Coisas escamosas:
+# Scrapy stuff:
 .scrapy
 
-# Documentação Sphinx
-docs / _build /
+# Sphinx documentation
+docs/_build/
 
 # PyBuilder
-alvo /
+target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -81,30 +81,30 @@ alvo /
 # pyenv
 .python-version
 
-# arquivo de agendamento de batida de aipo
+# celery beat schedule file
 celerybeat-schedule
 
-# SageMath analisou arquivos
-* .sage.py
+# SageMath parsed files
+*.sage.py
 
-# Ambientes
+# Environments
 .env
 .venv
-env /
-venv /
-ENV /
-env.bak /
-venv.bak /
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
-# Configurações do projeto Spyder
+# Spyder project settings
 .spyderproject
 .spyproject
 
-Configurações do projeto # Rope
+# Rope project settings
 .ropeproject
 
-# documentação do mkdocs
-/ site
+# mkdocs documentation
+/site
 
 # mypy
-.mypy_cache /
+.mypy_cache/
