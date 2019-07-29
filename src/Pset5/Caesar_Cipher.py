@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-
+#
 # author @danbros
 # Pset5 do curso MITx: 6.00.1x (edX)
+#
+# This file use "type hints", so run with Python 3.6 + or erase them (PEP 526)
 
 ### DO NOT MODIFY THIS FUNCTION ###
-def load_words(file_name: list) -> list:
+def load_words(file_name: str) -> list:
     """Depending on the size of the word list, this function may take a while
     to finish.
 
@@ -48,7 +50,7 @@ def is_word(word_list: list, word: str) -> bool:
 ### DO NOT MODIFY THIS FUNCTION ###
 def get_story_string() -> str:
     """Returns: a joke in encrypted text."""
-    f = open("story.txt", "r")
+    f = open("/home/danbros/Documentos/Python/PY/Week_5/Pset/story.txt", "r")
     story = str(f.read())
     f.close()
     return story
@@ -104,9 +106,13 @@ class Message(object):
             dict: a dictionary mapping a letter (string) to another letter
             (string).
         """
+        # Version 2 lines of Kiwitrader
+        # lu = 'abcdefghijklmnopqrstuvwxyz'*2 + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'*2
+        # return {lu[i]: lu[i+shift] for i in range(0, 78) if not 25 < i < 52}
+
         alph_lower = [chr(97 + i) for i in range(26)]
         alph_upper = [s.upper() for s in alph_lower]
-        
+
         shift_lower = alph_lower[shift:] + alph_lower[:shift]
         shift_upper = alph_upper[shift:] + alph_upper[:shift]
         
@@ -128,10 +134,13 @@ class Message(object):
             0 <= shift < 26
 
         Returns:
-            str: the message text (string) in which every character is shifted
-            down the alphabet by the input shift
+            str: the message text (string) in which every character is
+            shifted down the alphabet by the input shift
         """
         s_dict = self.build_shift_dict(shift)
+
+        # I cannot make it work that way, Exception KeyError
+        # ans = ((i, s_dict[i])[i in s_dict] for i in self.message_text)
 
         ans = (s_dict[i] if i in s_dict else i for i in self.message_text)
         # ans = []
@@ -161,7 +170,9 @@ class PlaintextMessage(Message):
             text(str): the message's text
             shift(int): the shift associated with this message
         """
-        super().__init__(text)
+        # If is the first time of this init(shift does not exist), call super()
+        if not hasattr(self, 'shift'):
+            super().__init__(text)
         self.shift = shift
         self.encrypting_dict = super().build_shift_dict(shift)
         self.message_text_encrypted = super().apply_shift(shift)
@@ -203,10 +214,22 @@ class PlaintextMessage(Message):
         Returns:
             None:
         """
-        self.shift = shift
-        self.encrypting_dict = super().build_shift_dict(shift)
-        self.message_text_encrypted = super().apply_shift(shift)
+        # A hint of Kiwitrader (this same func but oneline) (ignore the lint)
+        self.__init__(self.message_text, shift)
 
+        # My old solve
+        # self.shift = shift
+        # self.encrypting_dict = super().build_shift_dict(shift)
+        # self.message_text_encrypted = super().apply_shift(shift)
+
+    # Using property
+    # @property
+    # def key_value(self) -> int:
+    #     return self.shift
+
+    # @key_value.setter
+    # def key_value(self, shift):
+    #     self.__init__(self.message_text, shift)
 
 class CiphertextMessage(Message):
     def __init__(self, text: str):
@@ -237,21 +260,21 @@ class CiphertextMessage(Message):
             tuple: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         """
-        # This was work one time, after only work sometimes
-        # I cannot make this work, maybe the problema not is here
-        w_count = 0
-        max_count = 0
+        # Solved, the prob was w_score dont restart to 0, but inside loop, ok
+        msg_lst = (self.apply_shift(i) for i in range(26))
+        best = 0
 
-        for i in range(26):
-            msg = (self.apply_shift(i).split(' '))
-            for w in msg:
-                if is_word(self.valid_words, w):
-                    w_count += 1
-            if w_count > max_count:
-                max_count = w_count
+        for i, lst in enumerate(msg_lst):
+            w_score = 0
+            for w in lst.split():
+                w_score += is_word(self.valid_words, w)
+            if w_score > best: 
+                best = w_score
                 key = i
 
         return (key, self.apply_shift(key))
+
+
 
 
 def decrypt_story():
@@ -259,8 +282,7 @@ def decrypt_story():
     return CiphertextMessage(get_story_string()).decrypt_message()
 
 
-WORDLIST_FILENAME = 'words_Ccipher.txt'
-
+WORDLIST_FILENAME = '/home/danbros/Documentos/Python/PY/Week_5/Pset/words.txt'
 
 if __name__ == "__main__":
-    print(decrypt_story())
+   print(decrypt_story())
