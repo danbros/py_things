@@ -50,7 +50,7 @@ def is_word(word_list: list, word: str) -> bool:
 ### DO NOT MODIFY THIS FUNCTION ###
 def get_story_string() -> str:
     """Returns: a joke in encrypted text."""
-    f = open("/home/danbros/Documentos/Python/PY/Week_5/Pset/story.txt", "r")
+    f = open("story.txt", "r")
     story = str(f.read())
     f.close()
     return story
@@ -282,7 +282,7 @@ def decrypt_story():
     return CiphertextMessage(get_story_string()).decrypt_message()
 
 
-WORDLIST_FILENAME = '/home/danbros/Documentos/Python/PY/Week_5/Pset/words.txt'
+WORDLIST_FILENAME = 'words.txt'
 
 if __name__ == "__main__":
    print(decrypt_story())
